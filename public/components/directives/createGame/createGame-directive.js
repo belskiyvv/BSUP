@@ -40,6 +40,7 @@ angular.module('createGame')
 
                 scope.currentAnswerIndex = 0;
                 scope.createGameContainer = function(id) {
+                    scope.gameRunning = true;
                     var container = angular.element('<span id="'+id+'"></span>');
                     element.find('#game').append(container);
                     scope.question = scope.gameControl.questionsList[scope.currentAnswerIndex].text;
@@ -87,6 +88,7 @@ angular.module('createGame')
 
                 };
                 scope.stopGame = function() {
+                    scope.gameRunning = false;
                     document.stopGame();
                     element.find('#'+scope.gameId).remove();
                     scope.question = '';

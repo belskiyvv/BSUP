@@ -5,7 +5,7 @@
     <div id="game" class="text-center"></div>
 
 
-        <div class="col-sm-3 answer-text" ng-class="{'hover': hover===$index}"
+        <div ng-if="gameRunning" class="col-sm-3 answer-text" ng-class="{'hover': hover===$index}"
              ng-repeat="answer in gameControl.questionsList[currentAnswerIndex].answers track by $index">
             {{$index+1}}. <strong>{{answer}}</strong>
         </div>
