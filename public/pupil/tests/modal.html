@@ -1,0 +1,18 @@
+<form class="form-horizontal account-management-modal" role="form" novalidate>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="editName">Пройти тест</h4>
+    </div>
+
+    <div class="modal-body">
+        Tecт: <sctrong>{{test.name}}</sctrong>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default"
+                ng-click="$dismiss('cancel')">
+            Отмена
+        </button>
+        <button ng-click="goToTest()" class="btn btn-success">Пройти тест</button>
+    </div>
+</form>

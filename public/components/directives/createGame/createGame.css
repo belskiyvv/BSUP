@@ -1,0 +1,31 @@
+.game-container {
+    /*background-color: #2C3E50;*/
+    /*opacity: 0.5;*/
+    border-radius: 2%;
+}
+
+#game {
+    margin-left: 22%;
+}
+
+.answer-text {
+    -webkit-animation: color-change 1s infinite;
+    -moz-animation: color-change 1s infinite;
+    -o-animation: color-change 1s infinite;
+    -ms-animation: color-change 1s infinite;
+    animation: color-change 1s infinite;
+    font-size: 22px;
+}
+
+.game-container .question{
+    font-size: 30px;
+}
+
+.hover {
+    -webkit-animation: color-change 1s infinite;
+    -moz-animation: color-change 1s infinite;
+    -o-animation: color-change 1s infinite;
+    -ms-animation: color-change 1s infinite;
+    animation: color-change 1s infinite;
+    color: #18bc9c;
+}

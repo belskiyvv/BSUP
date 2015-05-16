@@ -1,0 +1,11 @@
+body {
+    padding-top: 70px;
+}
+
+header .big-img {
+    width: 300px;
+}
+
+header {
+    margin-top:-100px;
+}

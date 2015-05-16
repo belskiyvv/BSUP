@@ -1,0 +1,120 @@
+<div class="">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2>Создание теста</h2>
+            <hr class="star-primary">
+        </div>
+    </div>
+
+    <div class="container form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Имя теста</label>
+
+            <div class="col-sm-8">
+                <input ng-model="test.name" class="form-control" ng-required>
+            </div>
+        </div>
+    </div>
+    <form class="container form-horizontal" ng-repeat="question in test.questionsList track by $index">
+        <div class="form-group">
+            <div class="col-sm-12 text-center">
+                <h3>Вопрос {{$index + 1}}</h3>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Текст вопроса</label>
+
+            <div class="col-sm-8">
+                <textarea ng-model="question.text" class="form-control" rows="3" ng-required></textarea>
+            </div>
+        </div>
+        <br/>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Ответы</label>
+
+            <div class="col-sm-8">
+                <input ng-model="question.answers[0]" class="form-control" ng-required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <input ng-model="question.answers[1]" class="form-control" ng-required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <input ng-model="question.answers[2]" class="form-control" ng-required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <input ng-model="question.answers[3]" class="form-control" ng-required>
+            </div>
+        </div>
+        <br/>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Правильный ответ</label>
+
+            <div class="col-sm-8">
+                <select ng-model="question.correct" class="form-control" ng-required>
+                    <option value="0">{{question.answers[0]}}</option>
+                    <option value="1">{{question.answers[1]}}</option>
+                    <option value="2">{{question.answers[2]}}</option>
+                    <option value="3">{{question.answers[3]}}</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+    </form>
+    <br/>
+
+    <div class="container form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Представление теста</label>
+
+            <div class="col-sm-8">
+                <select ng-model="test.view" class="form-control" ng-required>
+                    <option ng-value="'tim'">Tim</option>
+                    <option ng-value="'cars'">Cars</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="container row">
+        <div class="pull-right">
+            <button ng-click="saveTest()" class="btn btn-success">Готово</button>
+            <button ng-click="addNew()" class="btn btn-info">Ещё один вопрос</button>
+        </div>
+    </div>
+    <br/>
+
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2>Описание</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <p>Здесь можно создать тест, который будет преставлен в виде игры и отправлен вашим ученикам.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a ng-click="testGame()" class="btn btn-lg btn-outline">Пройти созданный тест
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr class="star-light">
+    </section>
+    <div class="">
+        <create-game game-control="gameControl">
+        </create-game>
+    </div>
+</div>
