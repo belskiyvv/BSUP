@@ -160,6 +160,7 @@ function startCarsGame() {
             if(Math.abs(selectedCarBody.x-point.x)<=30 && Math.abs(selectedCarBody.y-point.y)<=30) {
                 $(document).trigger(''+selectedCarBody.testValue);
                 restart();
+                $(document).trigger('unhover');
                 return;
             }
 

@@ -4,7 +4,7 @@ angular.module('testPassing').factory('testPassing',['$http',function($http) {
             return $http.get('rest/test/'+id);
         },
         sendAnswers: function(testId,answers) {
-            return $http.put('rest/test/'+testId+'/saveAnswers',answers);
+            return $http.put('rest/test/'+testId,answers);
         }
     };
 }]);

@@ -105,12 +105,17 @@ module.exports = function(passport){
        })
     });
 
-    router.post('/rest/test/:testId/saveAnswers',isAuthenticated, function(req,res){
+    router.put('/rest/test/:testId',isAuthenticated, function(req,res){
         return rest.saveTestAnswers(req.params.testId,req.user._id,req.body,function(err) {
             if(err) {
+                console.log('500');
+                console.log(err);
                 return res.send(500);
             }
-            return res.send(200);
+            else {
+                console.log('200');
+                return res.send(200);
+            }
         })
     });
 

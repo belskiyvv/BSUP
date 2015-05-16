@@ -79,6 +79,9 @@ angular.module('createGame')
                     scope.gameControl.answers.push(value);
                     scope.currentAnswerIndex++;
                     if(scope.currentAnswerIndex === scope.gameControl.questionsList.length) {
+                        if(angular.isFunction(scope.gameControl.callBack)) {
+                            scope.gameControl.callBack();
+                        }
                         scope.stopGame();
                         return;
                     }

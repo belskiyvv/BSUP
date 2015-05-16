@@ -39,7 +39,7 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$moda
     tests.getTestsList().then(function (response) {
         $scope.testsList = response.data;
         $scope.testsList.forEach(function (test) {
-            test.status = test.answers.length === 4 ? 'Пройден' : 'Ожидается'
+            test.status = test.answers.length === test.questions.length ? 'Пройден' : 'Ожидается'
         })
     });
 
