@@ -76,7 +76,7 @@ angular.module('createGame')
                     });
                 };
                 scope.writeAnswer = function(value) {
-                    scope.gameControl.answers.push(value);
+                    scope.gameControl.answers.push(value-1);
                     scope.currentAnswerIndex++;
                     if(scope.currentAnswerIndex === scope.gameControl.questionsList.length) {
                         if(angular.isFunction(scope.gameControl.callBack)) {

@@ -8,8 +8,19 @@ module.exports = function (teachId, callback) {
         if (err) {
             return callback(err, null);
         }
-        else {
-            return callback(null, tests);
+        var pupilsDone;
+        var pupil, test;
+        for (var testIndex = 0; testIndex < tests.length; testIndex++) {
+            pupilsDone = [];
+            test = tests[testIndex];
+            for (var pupilIndex = 0; pupilIndex < test.pupils.length; pupilIndex++) {
+                pupil = tests[testIndex].pupils[pupilIndex];
+                if (pupil.answers.length === test.questions.length) {
+                    pupilsDone.push(pupil);
+                }
+            }
+            test.pupilsDone = pupilsDone;
         }
+        return callback(null, tests);
     })
 };

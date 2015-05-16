@@ -5,6 +5,8 @@ angular.module('app', [
     'home',
     'createTest',
     'login',
+    'tests',
+    'testPupils',
     'ui.bootstrap',
     'ui.grid',
     'ui.grid.resizeColumns',
