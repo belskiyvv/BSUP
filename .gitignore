@@ -1,0 +1,6 @@
+.idea
+node_modules
+public/teacher/node_modules
+public/pupil/node_modules
+mongodb
+public/bower_components
