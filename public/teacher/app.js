@@ -14,7 +14,8 @@ angular.module('app', [
     'ui.grid.pinning',
     'ui.grid.selection',
     'ui.grid.moveColumns',
-    'ngProgress'
+    'ngProgress',
+    'ui.grid.autoResize'
 ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/home'});

@@ -10,20 +10,22 @@ module.exports = function (pupilId, callback) {
                 return callback(err, null);
             }
             else {
-                //console.log(tests.length);
+                console.log(tests);
                 for (var testIndex = 0; testIndex < tests.length; testIndex++) {
-                    //console.log(tests[testIndex]);
+
+                    console.log(tests[testIndex]);
                     for (var questIndex = 0; questIndex < tests[testIndex].questions.length; questIndex++) {
-                        //console.log(tests[testIndex].questions[questIndex]);
                         delete tests[testIndex].questions[questIndex].correct;
                     }
-                    for(var pupilIndex = 0; pupilIndex < tests[testIndex].questions.length; pupilIndex++) {
+                    for(var pupilIndex = 0; pupilIndex < tests[testIndex].pupils.length; pupilIndex++) {
                         if(tests[testIndex].pupils[pupilIndex].pupil_id.toString() === pupilId.toString()) {
-                            tests[testIndex].answers = tests[testIndex].pupils[pupilIndex].answers;
+                            tests[testIndex].answers = tests[testIndex].pupils[pupilIndex].answers? tests[testIndex].pupils[pupilIndex].answers : [];
                         }
                     }
                     delete tests[testIndex].pupils;
                 }
+
+                console.log(tests);
 
                 return callback(null, tests);
             }

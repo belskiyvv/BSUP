@@ -1,4 +1,4 @@
-<div class="">
+<div class="create-test-container">
     <div class="row">
         <div class="col-lg-12 text-center">
             <h2>Создание теста</h2>
@@ -25,7 +25,7 @@
     <form name="form" class="container form-horizontal" ng-repeat="question in test.questionsList track by $index">
         <div class="form-group">
             <div class="col-sm-12 text-center">
-                <h3>Вопрос {{$index + 1}}</h3>
+                <h3>Вопрос {{$index + 1}} <i ng-if="test.questionsList.length>1" ng-click="test.questionsList.splice($index,1)" class="fa fa-close close-button"></i> </h3>
             </div>
         </div>
         <div class="form-group">
@@ -135,30 +135,30 @@
     </div>
     <br/>
 
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <h2>Описание</h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 text-center">
-                    <p>Здесь можно создать тест, который будет преставлен в виде игры и отправлен вашим ученикам.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a ng-click="testGame()" class="btn btn-lg btn-outline">Пройти созданный тест
-                    </a>
-                </div>
-            </div>
-        </div>
-        <hr class="star-light">
-    </section>
-    <div class="">
-        <create-game game-control="gameControl">
-        </create-game>
-    </div>
+    <!--<section class="success" id="about">-->
+        <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<div class="col-sm-12 text-center">-->
+                    <!--<h2>Описание</h2>-->
+                    <!--<hr class="star-light">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="col-sm-8 col-sm-offset-2 text-center">-->
+                    <!--<p>Здесь можно создать тест, который будет преставлен в виде игры и отправлен вашим ученикам.</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="col-lg-8 col-lg-offset-2 text-center">-->
+                    <!--<a ng-click="testGame()" class="btn btn-lg btn-outline">Пройти созданный тест-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<hr class="star-light">-->
+    <!--</section>-->
+    <!--<div class="">-->
+        <!--<create-game game-control="gameControl">-->
+        <!--</create-game>-->
+    <!--</div>-->
 </div>

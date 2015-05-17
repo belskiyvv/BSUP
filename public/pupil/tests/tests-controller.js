@@ -6,13 +6,23 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$moda
         enableColumnMenu: false,
         multiSelect: false,
         enableRowSelection: true,
-        enableRowHeaderSelection: false
+        enableRowHeaderSelection: false,
+        enableHorizontalScrollbar: 0,
+        enableVerticalScrollbar: 0
     };
 
     $scope.gridOptions.columnDefs = [
         {name: 'name', displayName: 'Название теста'},
         {name: 'status', displayName: 'Статус'}
     ];
+
+    $scope.getTableHeight = function() {
+        var rowHeight = 30; // your row height
+        var headerHeight = 62; // your header height
+        return {
+            height: ($scope[$scope.gridOptions.data].length * rowHeight + headerHeight) + "px"
+        };
+    };
 
     $scope.gridOptions.onRegisterApi = function (gridApi) {
         //set gridApi on scope

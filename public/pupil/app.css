@@ -1,15 +1,18 @@
-body {
-    padding-top: 70px;
-}
+/*body {*/
+    /*padding-top: 70px;*/
+/*}*/
 
 header .big-img {
     width: 300px;
 }
 
-header {
-    margin-top:-100px;
-}
+/*header {*/
+    /*margin-top:-170px;*/
+/*}*/
 
 .ui-grid {
     box-shadow: 3px 3px 3px 3px #EDEDED;
+}
+.ui-grid-column-menu-button {
+    display: none;
 }

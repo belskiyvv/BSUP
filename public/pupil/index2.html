@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="bower_components/ngprogress/ngProgress.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-select/dist/select.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/ihover/src/ihover.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/animations.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
 
     <link rel="stylesheet" type="text/css" href="pupil/app.css">
     <link rel="stylesheet" type="text/css" href="pupil/header/header.css">
@@ -22,7 +25,12 @@
 <body ng-controller="appController">
 <div ng-include="'pupil/header/header.html'"></div>
 
-<div ng-view></div>
+
+
+<div class="page" ng-view></div>
+
+<div ng-include="'footer/footer.html'"></div>
+
 
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>

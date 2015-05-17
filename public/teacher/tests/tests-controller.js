@@ -8,11 +8,13 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$temp
         enableGridMenu: false,
         multiSelect: false,
         enableRowSelection: true,
-        enableRowHeaderSelection: false
+        enableRowHeaderSelection: false,
+        enableHorizontalScrollbar: 0,
+        enableVerticalScrollbar: 0
     };
 
     $scope.gridOptions.columnDefs = [
-        {name: 'name', displayName: 'Название теста', cellTemplate: '<a class="pointer" ng-click="row.grid.appScope.testInfo(row.entity)">{{row.entity.name}}</a>'},
+        {name: 'name', displayName: 'Название теста', cellTemplate: '<div class="ui-grid-cell-contents ng-binding ng-scope"><a class="pointer" ng-click="row.grid.appScope.testInfo(row.entity)">{{row.entity.name}}</a></div>'},
         {name: 'status', displayName: 'Статус', cellTemplate: $templateCache.get('test-status-line.html'), enableFiltering: false}
     ];
 
@@ -49,6 +51,14 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$temp
         //        }
         //    });
         //});
+    };
+
+    $scope.getTableHeight = function() {
+        var rowHeight = 30; // your row height
+        var headerHeight = 62; // your header height
+        return {
+            height: ($scope[$scope.gridOptions.data].length * rowHeight + headerHeight) + "px"
+        };
     };
 
     tests.getTestsList().then(function (response) {

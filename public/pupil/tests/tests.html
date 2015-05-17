@@ -1,23 +1,7 @@
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <img class="img-responsive big-img" src="assets/images/icons/PNG/Document.png" alt="">
-
-                <div class="intro-text">
-                    <span class="name"><h1>Мои тесты"</h1></span>
-                    <hr class="star-light">
-                    <span class="skills">Тут можно увидеть список тестов, которые Вам задали
-                        </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<div class="container">
+<div class="container page-container">
     <div class="row">
         <div class="col-lg-12">
-            <div ui-grid="gridOptions" ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
+            <div class="clickable" ui-grid="gridOptions" ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ng-style="getTableHeight()"></div>
         </div>
     </div>
 </div>

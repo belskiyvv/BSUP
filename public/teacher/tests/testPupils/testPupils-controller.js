@@ -7,7 +7,9 @@ angular.module('testPupils').controller('testPupilsController', ['testPupils', '
         enableColumnMenu: false,
         multiSelect: false,
         enableRowSelection: true,
-        enableRowHeaderSelection: false
+        enableRowHeaderSelection: false,
+        enableHorizontalScrollbar: 0,
+        enableVerticalScrollbar: 0
     };
     $scope.gridOptions.columnDefs = [
         {name: 'name', displayName: 'Имя'},
@@ -42,6 +44,14 @@ angular.module('testPupils').controller('testPupilsController', ['testPupils', '
     testPupils.getPupilsList($routeParams.testId).then(function (response) {
         $scope.pupils = response.data;
     });
+
+    $scope.getTableHeight = function() {
+        var rowHeight = 30; // your row height
+        var headerHeight = 62; // your header height
+        return {
+            height: ($scope[$scope.gridOptions.data].length * rowHeight + headerHeight) + "px"
+        };
+    };
 
     testPupils.getTest($routeParams.testId).then(function(response){
         $scope.test = response.data;
