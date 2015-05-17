@@ -1,3 +1,25 @@
 body {
     padding-top: 70px;
 }
+.ui-grid {
+    box-shadow: 3px 3px 3px 3px #EDEDED;
+}
+
+/*.vadidation {*/
+    /*-webkit-transition: all 1s ease-out 0.5s;*/
+    /*-moz-transition: all 1s ease-out 0.5s;*/
+    /*-o-transition: all 1s ease-out 0.5s;*/
+    /*transition: all 1s ease-out 0.5s;*/
+/*}*/
+
+/*.validation .ng-hide {*/
+    /*matgin-top: -30px;*/
+    /*visibility: hidden;*/
+/*}*/
+
+
+.validation {
+    color: rgb(255, 106, 106);
+   visibility: hidden;
+    font-weight: bold;
+}

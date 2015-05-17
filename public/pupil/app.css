@@ -9,3 +9,7 @@ header .big-img {
 header {
     margin-top:-100px;
 }
+
+.ui-grid {
+    box-shadow: 3px 3px 3px 3px #EDEDED;
+}

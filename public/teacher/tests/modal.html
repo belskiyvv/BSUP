@@ -1,0 +1,66 @@
+<form class="form-horizontal account-management-modal" role="form" novalidate>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="editName">Тест "{{test.name}}"</h4>
+    </div>
+
+    <div class="modal-body text-center">
+        <div class="row" ng-repeat="question in test.questions">
+            <p>Вопрос: <strong>{{question.text}}</strong></p>
+
+            <p>Ответы</p>
+
+            <p>
+
+            <div class="col-sm-offset-1">
+                <strong>{{question.answers[0]}}</strong>
+            </div>
+            </p>
+
+            <p>
+
+            <div class="col-sm-offset-1">
+                <strong>{{question.answers[1]}}</strong>
+            </div>
+            </p>
+
+            <p>
+
+            <div class="col-sm-offset-1">
+                <strong>{{question.answers[2]}}</strong>
+            </div>
+            </p>
+
+            <p>
+
+            <div class="col-sm-offset-1">
+                <strong>{{question.answers[3]}}</strong>
+            </div>
+            </p>
+
+            <p>
+
+            <div class="col-sm-offset-1">
+                <strong>{{question.answers[4]}}</strong>
+            </div>
+            </p>
+
+            <p>Правильный: <strong>{{question.answers[question.correct]}}</strong></p>
+            <div class="col-sm-offset-3 col-sm-6">
+                <hr/>
+            </div>
+
+        </div>
+        <div class="row">
+            <p>Представление теста: <strong>{{test.view}}</strong></p>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success"
+                ng-click="$dismiss('cancel')">
+            Ок
+        </button>
+    </div>
+</form>

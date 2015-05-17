@@ -6,7 +6,7 @@
                          <!--type="success"><i>Ответили {{row.entity.pupilsDone.length}} из {{row.entity.pupils.length}}</i>-->
             <!--</progressbar>-->
             <div class="progress status-progress">
-                <div ng-click="row.grid.appScope.goToTestPupils(row.entity._id)" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{row.entity.pupilsDone.length}}" aria-valuemin="0" aria-valuemax="{{row.entity.pupils.length}}" style="width: {{row.entity.pupilsDone.length*100/row.entity.pupils.length}}%">
+                <div ng-click="row.grid.appScope.goToTestPupils(row.entity._id)" class="pointer progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{row.entity.pupilsDone.length}}" aria-valuemin="0" aria-valuemax="{{row.entity.pupils.length}}" style="width: {{row.entity.pupilsDone.length*100/row.entity.pupils.length}}%">
                     Ответили {{row.entity.pupilsDone.length}} из {{row.entity.pupils.length}}
                 </div>
             </div>
@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div ui-grid="gridOptions"  ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
+                <div ui-grid="gridOptions" ui-grid-resize-columns ui-grid-move-columns></div>
             </div>
         </div>
     </div>

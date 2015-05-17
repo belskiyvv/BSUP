@@ -7,15 +7,22 @@
     </div>
 
     <div class="container form-horizontal">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Имя теста</label>
+        <form name="testform" action="">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Имя теста</label>
 
-            <div class="col-sm-8">
-                <input ng-model="test.name" class="form-control" ng-required>
+                <div class="col-sm-8">
+                    <input name="testName" ng-model="test.name" class="form-control" required>
+
+                    <div class="validation"
+                         ng-class="{'slideDown': testform.testName.$error.required && (testform.testName.$dirty || validError)}">
+                        Это поле не может быть пустым
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
-    <form class="container form-horizontal" ng-repeat="question in test.questionsList track by $index">
+    <form name="form" class="container form-horizontal" ng-repeat="question in test.questionsList track by $index">
         <div class="form-group">
             <div class="col-sm-12 text-center">
                 <h3>Вопрос {{$index + 1}}</h3>
@@ -25,7 +32,12 @@
             <label class="col-sm-2 control-label">Текст вопроса</label>
 
             <div class="col-sm-8">
-                <textarea ng-model="question.text" class="form-control" rows="3" ng-required></textarea>
+                <textarea name="text" ng-model="question.text" class="form-control" rows="3" required></textarea>
+
+                <div class="validation"
+                     ng-class="{'slideDown': form.text.$error.required && (form.text.$dirty || validError)}">
+                    Это поле не может быть пустым
+                </div>
             </div>
         </div>
         <br/>
@@ -34,22 +46,42 @@
             <label class="col-sm-2 control-label">Ответы</label>
 
             <div class="col-sm-8">
-                <input ng-model="question.answers[0]" class="form-control" ng-required>
+                <input name="answ1" ng-model="question.answers[0]" class="form-control" required>
+
+                <div class="validation"
+                     ng-class="{'slideDown': form.answ1.$error.required && (form.answ1.$dirty || validError)}">
+                    Это поле не может быть пустым
+                </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
-                <input ng-model="question.answers[1]" class="form-control" ng-required>
+                <input name="answ2" ng-model="question.answers[1]" class="form-control" required>
+
+                <div class="validation"
+                     ng-class="{'slideDown': form.answ2.$error.required && (form.answ2.$dirty || validError)}">
+                    Это поле не может быть пустым
+                </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
-                <input ng-model="question.answers[2]" class="form-control" ng-required>
+                <input name="answ3" ng-model="question.answers[2]" class="form-control" required>
+
+                <div class="validation"
+                     ng-class="{'slideDown': form.answ3.$error.required && (form.answ3.$dirty || validError)}">
+                    Это поле не может быть пустым
+                </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
-                <input ng-model="question.answers[3]" class="form-control" ng-required>
+                <input name="answ4" ng-model="question.answers[3]" class="form-control" required>
+
+                <div class="validation"
+                     ng-class="{'slideDown': form.answ4.$error.required && (form.answ4.$dirty || validError)}">
+                    Это поле не может быть пустым
+                </div>
             </div>
         </div>
         <br/>
@@ -58,12 +90,17 @@
             <label class="col-sm-2 control-label">Правильный ответ</label>
 
             <div class="col-sm-8">
-                <select ng-model="question.correct" class="form-control" ng-required>
+                <select name="correct" ng-model="question.correct" class="form-control" required>
                     <option value="0">{{question.answers[0]}}</option>
                     <option value="1">{{question.answers[1]}}</option>
                     <option value="2">{{question.answers[2]}}</option>
                     <option value="3">{{question.answers[3]}}</option>
                 </select>
+
+                <div class="validation"
+                     ng-class="{'slideDown': form.correct.$error.required && (form.correct.$dirty || validError)}">
+                    Это поле не может быть пустым
+                </div>
             </div>
         </div>
         <br/>
@@ -71,16 +108,23 @@
     <br/>
 
     <div class="container form-horizontal">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Представление теста</label>
+        <form name="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Представление теста</label>
 
-            <div class="col-sm-8">
-                <select ng-model="test.view" class="form-control" ng-required>
-                    <option ng-value="'tim'">Tim</option>
-                    <option ng-value="'cars'">Cars</option>
-                </select>
+                <div class="col-sm-8">
+                    <select name="view"ng-model="test.view" class="form-control" required>
+                        <option ng-value="'tim'">Tim</option>
+                        <option ng-value="'cars'">Cars</option>
+                    </select>
+
+                    <div class="validation"
+                         ng-class="{'slideDown': form.view.$error.required && (form.view.$dirty || validError)}">
+                        Это поле не может быть пустым
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 
     <div class="container row">
