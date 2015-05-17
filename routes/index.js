@@ -12,45 +12,45 @@ var isAuthenticated = function (req, res, next) {
     res.sendfile('public/loginPage.html');
 };
 
-module.exports = function(passport){
+module.exports = function (passport) {
 
-    router.get('/', isAuthenticated, function(req, res) {
+    router.get('/', isAuthenticated, function (req, res) {
         // Display the Login page with any flash message, if any
         //res.sendfile('public/teacher/index2.html');
     });
 
-    router.post('/login', function(req,res,next) {
-        passport.authenticate('login',function (err, account,info) {
-            req.logIn(account, function() {
-                if(!account) {
+    router.post('/login', function (req, res, next) {
+        passport.authenticate('login', function (err, account, info) {
+            req.logIn(account, function () {
+                if (!account) {
                     return res.sendfile('public/loginPage.html')
                 }
-                if(info === 'teacher') {
+                if (info === 'teacher') {
                     return res.sendfile('public/teacher/index2.html');
                 }
-                if(info === 'pupil') {
+                if (info === 'pupil') {
                     return res.sendfile('public/pupil/index2.html');
                 }
 
             });
-    })(req, res, next)
+        })(req, res, next)
     });
 
 
-    router.post('/signup', passport.authenticate('signup'),function() {
+    router.post('/signup', passport.authenticate('signup'), function () {
     });
 
-    router.get('/home', isAuthenticated,function(req,res) {
+    router.get('/home', isAuthenticated, function (req, res) {
         console.log(req.user);
     });
 
-    router.post('/rest/tests',isAuthenticated,function(req,res) {
+    router.post('/rest/tests', isAuthenticated, function (req, res) {
         var test = req.body;
         console.log(req.user._id);
         test.teach_id = req.user._id;
         console.log(test);
-        rest.createTest(test,function(err) {
-            if(err) {
+        rest.createTest(test, function (err) {
+            if (err) {
                 res.send(500);
             }
             else {
@@ -59,9 +59,9 @@ module.exports = function(passport){
         })
     });
 
-    router.get('/rest/pupils',isAuthenticated, function(req,res) {
-        rest.getPupilsByTeachId(req.user._id,function(err,pupils) {
-            if(pupils) {
+    router.get('/rest/pupils', isAuthenticated, function (req, res) {
+        rest.getPupilsByTeachId(req.user._id, function (err, pupils) {
+            if (pupils) {
                 res.json(pupils);
             }
             else {
@@ -71,8 +71,23 @@ module.exports = function(passport){
 
     });
 
-    router.get('/rest/tests',isAuthenticated, function(req,res) {
-        if(req.user.role === 'teacher') {
+    router.post('/rest/pupils',isAuthenticated, function(req,res) {
+        if(req.user.role !== 'teacher') {
+            return res.send(401);
+        }
+        return rest.addPupil(req.body,req.user._id,function(err) {
+            if(err) {
+                console.log(err);
+                return res.send(500);
+            }
+            else {
+                return res.send(200);
+            }
+        })
+    })
+
+    router.get('/rest/tests', isAuthenticated, function (req, res) {
+        if (req.user.role === 'teacher') {
             return rest.getTestsByTeachId(req.user._id, function (err, tests) {
                 if (tests) {
                     res.json(tests);
@@ -82,7 +97,7 @@ module.exports = function(passport){
                 }
             });
         }
-        if(req.user.role === 'pupil') {
+        if (req.user.role === 'pupil') {
             console.log('pupil tests');
             return rest.getTestsByPupilId(req.user._id, function (err, tests) {
                 if (tests) {
@@ -96,10 +111,10 @@ module.exports = function(passport){
 
     });
 
-    router.get('/rest/pupils/:pupilId',isAuthenticated,function(req,res) {
-        if(req.user.role === 'teacher') {
-            rest.getPupilById(req.params.pupilId,function(err,pupil) {
-                if(err) {
+    router.get('/rest/pupils/:pupilId', isAuthenticated, function (req, res) {
+        if (req.user.role === 'teacher') {
+            rest.getPupilById(req.params.pupilId, function (err, pupil) {
+                if (err) {
                     return res.send(500);
                 }
                 return res.json(pupil);
@@ -110,30 +125,40 @@ module.exports = function(passport){
         }
     });
 
-    router.get('/rest/tests/:testId',isAuthenticated, function(req,res){
-       return rest.getTestById(req.params.testId,req.user._id,function(err,test) {
-           if(err) {
-               return res.send(500);
-           }
-           return res.json(test);
-       })
+    router.get('/rest/tests/:testId', isAuthenticated, function (req, res) {
+        if (req.user.role === 'pupil') {
+            return rest.getTestById.pupil(req.params.testId, req.user._id, function (err, test) {
+                if (err) {
+                    return res.send(500);
+                }
+                return res.json(test);
+            })
+        }
+        if (req.user.role === 'teacher') {
+            return rest.getTestById.teacher(req.params.testId, function (err, test) {
+                if (err) {
+                    return res.send(500);
+                }
+                return res.json(test);
+            })
+        }
     });
 
-    router.get('/rest/tests/:testId/pupils',isAuthenticated, function(req,res){
-        if(req.user.role !== 'teacher') {
+    router.get('/rest/tests/:testId/pupils', isAuthenticated, function (req, res) {
+        if (req.user.role !== 'teacher') {
             return res.send(401);
         }
-        return rest.getPupilsByTestId(req.params.testId,function(err,pupils) {
-            if(err) {
+        return rest.getPupilsByTestId(req.params.testId, function (err, pupils) {
+            if (err) {
                 return res.send(500);
             }
             return res.json(pupils);
         })
     });
 
-    router.put('/rest/tests/:testId',isAuthenticated, function(req,res){
-        return rest.saveTestAnswers(req.params.testId,req.user._id,req.body,function(err) {
-            if(err) {
+    router.put('/rest/tests/:testId', isAuthenticated, function (req, res) {
+        return rest.saveTestAnswers(req.params.testId, req.user._id, req.body, function (err) {
+            if (err) {
                 console.log('500');
                 console.log(err);
                 return res.send(500);
@@ -146,12 +171,10 @@ module.exports = function(passport){
     });
 
 
-
-    router.get('/signout', function(req, res) {
+    router.get('/signout', function (req, res) {
         req.logout();
         res.redirect('/');
     });
-
 
 
     return router;

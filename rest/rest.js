@@ -6,6 +6,7 @@ var getTestById = require('./services/getTestById');
 var saveTestAnswers = require('./services/saveTestAnswers');
 var getPupilById = require('./services/getPupilById');
 var getPupilsByTestId = require('./services/getPupilsByTestId');
+var addPupil = require('./services/addPupil');
 var express = require('express');
 
 module.exports = {
@@ -16,6 +17,7 @@ module.exports = {
     getTestById: getTestById,
     saveTestAnswers: saveTestAnswers,
     getPupilById: getPupilById,
-    getPupilsByTestId: getPupilsByTestId
+    getPupilsByTestId: getPupilsByTestId,
+    addPupil: addPupil
 
 }

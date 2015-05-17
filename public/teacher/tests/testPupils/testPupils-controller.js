@@ -1,4 +1,4 @@
-angular.module('testPupils').controller('testPupilsController', ['testPupils', '$scope', '$routeParams', function (testPupils, $scope, $routeParams) {
+angular.module('testPupils').controller('testPupilsController', ['testPupils', '$scope', '$routeParams','$modal', function (testPupils, $scope, $routeParams,$modal) {
     $scope.pupils = [];
     $scope.gridOptions = {
         data: 'pupils',
@@ -20,24 +20,33 @@ angular.module('testPupils').controller('testPupilsController', ['testPupils', '
         //set gridApi on scope
         $scope.gridApi = gridApi;
 
-        //gridApi.selection.on.rowSelectionChanged($scope, function (row) {
-        //    $modal.open({
-        //        scope: $scope,
-        //        templateUrl: 'pupil/tests/modal.html',
-        //        controller: 'testsModalController',
-        //        backdrop: 'static',
-        //        size: 'lg',
-        //        resolve: {
-        //            test: function () {
-        //                return row.entity;
-        //            }
-        //        }
-        //    });
-        //});
+        gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+            $modal.open({
+                scope: $scope,
+                templateUrl: 'teacher/tests/testPupils/modal.html',
+                controller: 'testPupilsModalController',
+                backdrop: 'static',
+                size: 'lg',
+                resolve: {
+                    test: function () {
+                        return $scope.test;
+                    },
+                    pupil: function() {
+                        return row.entity;
+                    }
+                }
+            });
+        });
     };
 
     testPupils.getPupilsList($routeParams.testId).then(function (response) {
         $scope.pupils = response.data;
     });
+
+    testPupils.getTest($routeParams.testId).then(function(response){
+        $scope.test = response.data;
+    })
+
+
 
 }]);

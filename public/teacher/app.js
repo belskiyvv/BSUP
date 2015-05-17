@@ -7,6 +7,7 @@ angular.module('app', [
     'login',
     'tests',
     'testPupils',
+    'pupils',
     'ui.bootstrap',
     'ui.grid',
     'ui.grid.resizeColumns',

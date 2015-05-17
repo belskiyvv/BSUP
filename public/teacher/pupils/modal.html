@@ -1,0 +1,49 @@
+<form class="form-horizontal account-management-modal" role="form" novalidate>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="editName">Новый ученик</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Имя</label>
+
+            <div class="col-sm-8">
+                <input ng-model="pupil.name" class="form-control" ng-required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Фамилия</label>
+
+            <div class="col-sm-8">
+                <input ng-model="pupil.secondName" class="form-control" ng-required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Логин</label>
+
+            <div class="col-sm-8">
+                <input ng-model="pupil.username" class="form-control" ng-required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Пароль</label>
+
+            <div class="col-sm-8">
+                <input ng-model="pupil.password" type="password" class="form-control" ng-required>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+
+        <button ng-click="savePupil(pupil)" class="btn btn-success">Сохранить</button>
+        <button type="button" class="btn btn-default"
+                ng-click="$dismiss('cancel')">
+            Отмена
+        </button>
+    </div>
+</form>
