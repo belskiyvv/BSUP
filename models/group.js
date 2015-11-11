@@ -6,5 +6,5 @@ module.exports = mongoose.model('Group', {
     name: String,
     pupils: [{
         pupil_id: ObjectId
-    }],
+    }]
 });

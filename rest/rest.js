@@ -10,14 +10,13 @@ var addPupil = require('./services/addPupil');
 var express = require('express');
 
 module.exports = {
-    createTest: createTest,
-    getPupilsByTeachId: getPupilsByTeachId,
-    getTestsByTeachId: getTestsByTeachId,
-    getTestsByPupilId: getTestsByPupilId,
-    getTestById: getTestById,
-    saveTestAnswers: saveTestAnswers,
-    getPupilById: getPupilById,
-    getPupilsByTestId: getPupilsByTestId,
-    addPupil: addPupil
-
-}
+	createTest: createTest,
+	getPupilsByTeachId: getPupilsByTeachId,
+	getTestsByTeachId: getTestsByTeachId,
+	getTestsByPupilId: getTestsByPupilId,
+	getTestById: getTestById,
+	saveTestAnswers: saveTestAnswers,
+	getPupilById: getPupilById,
+	getPupilsByTestId: getPupilsByTestId,
+	addPupil: addPupil
+};

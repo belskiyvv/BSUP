@@ -4,30 +4,30 @@ var signup = require('./signup');
 var Teacher = require('../models/teacher');
 var Pupil = require('../models/pupil');
 
-module.exports = function(passport) {
-    passport.serializeUser(function(user, done) {
-        console.log('serializing user:',user);
-        done(null, user._id);
-    });
+module.exports = function (passport) {
+	passport.serializeUser(function (user, done) {
+		console.log('serializing user:', user);
+		done(null, user._id);
+	});
 
-    passport.deserializeUser(function(id, done) {
-        console.log('deser');
-        Teacher.findById(id, function(err, user) {
-            //console.log('deserializing user:',user);
-            if(user) {
-                user.role = 'teacher';
-                return done(err, user);
-            }
+	passport.deserializeUser(function (id, done) {
+		console.log('deser');
+		Teacher.findById(id, function (err, user) {
+			//console.log('deserializing user:',user);
+			if (user) {
+				user.role = 'teacher';
+				return done(err, user);
+			}
 
-            Pupil.findById(id,function(err,user) {
-                if(user) {
-                    user.role = 'pupil';
-                    return done(err, user);
-                }
-            })
-        });
-    });
+			Pupil.findById(id, function (err, user) {
+				if (user) {
+					user.role = 'pupil';
+					return done(err, user);
+				}
+			})
+		});
+	});
 
-    login(passport);
-    signup(passport);
+	login(passport);
+	signup(passport);
 };

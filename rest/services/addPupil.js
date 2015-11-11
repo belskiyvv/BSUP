@@ -4,81 +4,82 @@ var Teacher = require('../../models/teacher');
 var Group = require('../../models/group');
 var bCrypt = require('bcrypt-nodejs');
 
-module.exports = function(pupil,teacherId,callback) {
-    //console.log(pupil);
-    var createHash = function (password) {
-        return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-    };
-    Group.findOne({teacher_id: teacherId},function(err,group) {
-        //console.log(group);
-        if(err) {
-            return callback(err);
-        }
-        if(!group) {
-            group = new Group;
-            group.teacher_id = teacherId;
-        }
-        Pupil.findOne({'username': pupil.username}, function (err, user) {
-            if (err) {
-                return callback(err)
-            }
-            if (user) {
-                return callback('pupil exists')
-            }
+module.exports = function (pupil, teacherId, callback) {
+	//console.log(pupil);
+	var createHash = function (password) {
+		return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+	};
 
-            var newPupil = new Pupil();
+	Group.findOne({teacher_id: teacherId}, function (err, group) {
+		//console.log(group);
+		if (err) {
+			return callback(err);
+		}
+		if (!group) {
+			group = new Group;
+			group.teacher_id = teacherId;
+		}
+		Pupil.findOne({'username': pupil.username}, function (err, user) {
+			if (err) {
+				return callback(err)
+			}
+			if (user) {
+				return callback('pupil exists')
+			}
 
-            var username = pupil.username;
-            var password = pupil.password;
-            var name = pupil.name;
-            var secondName = pupil.secondName;
+			var newPupil = new Pupil();
 
-            //console.log(pupil);
+			var username = pupil.username;
+			var password = pupil.password;
+			var name = pupil.name;
+			var secondName = pupil.secondName;
 
-            newPupil.username = username;
-            newPupil.password = createHash(password);
-            newPupil.name = name;
-            newPupil.secondName = secondName;
+			//console.log(pupil);
 
-            newPupil.save(function (err) {
-                if (err) {
-                    return callback(err)
-                }
+			newPupil.username = username;
+			newPupil.password = createHash(password);
+			newPupil.name = name;
+			newPupil.secondName = secondName;
 
-                group.pupils.push({pupil_id: newPupil._id});
-                group.save(function(err) {
-                    if(err) {
-                        return callback(err)
-                    }
-                    return callback(null);
-                })
-            })
-        });
-    })
-    //Pupil.findOne({'username': username}, function (err, user) {
-    //    if (err) {
-    //        console.log('Error in signup: ' + err);
-    //        return done(err);
-    //    }
-    //    if (user) {
-    //        console.log('Pupil already exists: ' + username);
-    //        return done(null, false, req.flash('message', 'Pupil Already Exists'));
-    //    }
-    //
-    //    var newPupil = new Pupil();
-    //
-    //    newPupil.username = username;
-    //    newPupil.password = createHash(password);
-    //    newPupil.name = name;
-    //    newPupil.secondName = secondName;
-    //
-    //    newPupil.save(function () {
-    //        if (err) {
-    //            console.log('Error in saving Pupil: ' + err);
-    //            throw err;
-    //        }
-    //
-    //        console.log('new Pupil ' + username);
-    //    })
-    //});
-}
+			newPupil.save(function (err) {
+				if (err) {
+					return callback(err)
+				}
+
+				group.pupils.push({pupil_id: newPupil._id});
+				group.save(function (err) {
+					if (err) {
+						return callback(err)
+					}
+					return callback(null);
+				})
+			})
+		});
+	});
+	//Pupil.findOne({'username': username}, function (err, user) {
+	//    if (err) {
+	//        console.log('Error in signup: ' + err);
+	//        return done(err);
+	//    }
+	//    if (user) {
+	//        console.log('Pupil already exists: ' + username);
+	//        return done(null, false, req.flash('message', 'Pupil Already Exists'));
+	//    }
+	//
+	//    var newPupil = new Pupil();
+	//
+	//    newPupil.username = username;
+	//    newPupil.password = createHash(password);
+	//    newPupil.name = name;
+	//    newPupil.secondName = secondName;
+	//
+	//    newPupil.save(function () {
+	//        if (err) {
+	//            console.log('Error in saving Pupil: ' + err);
+	//            throw err;
+	//        }
+	//
+	//        console.log('new Pupil ' + username);
+	//    })
+	//});
+};

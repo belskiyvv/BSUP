@@ -4,30 +4,28 @@ var Test = require('../../models/test');
 
 
 module.exports = function (pupilId, callback) {
-    Test.find(
-        {'pupils.pupil_id': pupilId}).lean().exec(function (err, tests) {
-            if (err) {
-                return callback(err, null);
-            }
-            else {
-                console.log(tests);
-                for (var testIndex = 0; testIndex < tests.length; testIndex++) {
+	Test.find(
+		{'pupils.pupil_id': pupilId}).lean().exec(function (err, tests) {
+			if (err) {
+				return callback(err, null);
+			}
 
-                    console.log(tests[testIndex]);
-                    for (var questIndex = 0; questIndex < tests[testIndex].questions.length; questIndex++) {
-                        delete tests[testIndex].questions[questIndex].correct;
-                    }
-                    for(var pupilIndex = 0; pupilIndex < tests[testIndex].pupils.length; pupilIndex++) {
-                        if(tests[testIndex].pupils[pupilIndex].pupil_id.toString() === pupilId.toString()) {
-                            tests[testIndex].answers = tests[testIndex].pupils[pupilIndex].answers? tests[testIndex].pupils[pupilIndex].answers : [];
-                        }
-                    }
-                    delete tests[testIndex].pupils;
-                }
+			else {
+				for (var testIndex = 0; testIndex < tests.length; testIndex++) {
 
-                console.log(tests);
+					//TODO: сделать выборку
+					for (var questIndex = 0; questIndex < tests[testIndex].questions.length; questIndex++) {
+						delete tests[testIndex].questions[questIndex].correct;
+					}
+					for (var pupilIndex = 0; pupilIndex < tests[testIndex].pupils.length; pupilIndex++) {
+						if (tests[testIndex].pupils[pupilIndex].pupil_id.toString() === pupilId.toString()) {
+							tests[testIndex].answers = tests[testIndex].pupils[pupilIndex].answers ? tests[testIndex].pupils[pupilIndex].answers : [];
+						}
+					}
+					delete tests[testIndex].pupils;
+				}
 
-                return callback(null, tests);
-            }
-        })
+				return callback(null, tests);
+			}
+		})
 };
