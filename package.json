@@ -16,5 +16,9 @@
     "passport": "~0.2.0",
     "passport-local": "~1.0.0",
     "serve-favicon": "^2.2.0"
-  }
+  },
+  "scripts": {
+	"start": "node app.js"
+	},
+	"main": "app.js"
 }
