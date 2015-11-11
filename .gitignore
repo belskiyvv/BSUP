@@ -3,4 +3,5 @@ node_modules
 public/teacher/node_modules
 public/pupil/node_modules
 mongodb
+dump
 public/bower_components
