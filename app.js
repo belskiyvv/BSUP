@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 
 var dbConfig = require('./db');
 var mongoose = require('mongoose');
-
 mongoose.connect(dbConfig.url);
 
 var app = express();
@@ -42,32 +41,36 @@ initPassport(passport);
 var routes = require('./routes/index')(passport);
 app.use('/', routes);
 
+//createTeacher();
+//createGroup();
+
 /// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.use(function (req, res, next) {
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        //res.render('error', {
-        //    message: err.message,
-        //    error: err
-        //});
-        res.send(err.message);
-    });
+	app.use(function (err, req, res, next) {
+		res.status(err.status || 500);
+		//res.render('error', {
+		//    message: err.message,
+		//    error: err
+		//});
+		res.send(err.message);
+	});
 }
 
-app.set('port', process.env.PORT || 3000);
+app.set('ip_address', process.env.OPENSHIFT_NODEJS_IP || 'localhost');
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
 
 var debug = require('debug')('passport-mongo');
 
-var server = app.listen(app.get('port'), function() {
-    debug('Express server listening on port ' + server.address().port);
+var server = app.listen(app.get('port'), app.get('ip_address'), function () {
+	debug('Express server listening on port ' + server.address().port);
 });
 
 module.exports = app;

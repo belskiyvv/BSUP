@@ -20,10 +20,34 @@
 	<link rel="stylesheet" type="text/css" href="pupil/header/header.css">
 	<link rel="stylesheet" type="text/css" href="pupil/home/home.css">
 	<link rel="stylesheet" type="text/css" href="components/directives/createGame/createGame.css">
+	<link rel="stylesheet" type="text/css" href="components/UIProgress/component.css">
 
 
 </head>
 <body ng-controller="appController">
+
+<!--SPINNER-->
+<span ng-if="!appReady">
+<div class="dots">
+	<div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+</div>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<filter id="goo">
+			<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"/>
+			<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
+			<!--<feBlend in2="goo" in="SourceGraphic" result="mix" />-->
+		</filter>
+	</defs>
+</svg>
+</span>
+<!--END-->
+
 <div ng-include="'pupil/header/header.html'"></div>
 
 
@@ -50,6 +74,9 @@
 <script type="text/javascript" src="bower_components/angular-ui-sortable/sortable.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-ui-grid/ui-grid.js"></script>
 <script type="text/javascript" src="components/phaser/phaser.min.js"></script>
+<script type="text/javascript" src="components/UIProgress/modernizr.custom.js"></script>
+<script type="text/javascript" src="components/UIProgress/classie.js"></script>
+<script type="text/javascript" src="components/UIProgress/uiProgressButton.js"></script>
 
 
 <script type="text/javascript" src="pupil/app.js"></script>
@@ -58,6 +85,8 @@
 <script type="text/javascript" src="components/directives/directives.js"></script>
 <script type="text/javascript" src="components/directives/createGame/createGame.js"></script>
 <script type="text/javascript" src="components/directives/createGame/createGame-directive.js"></script>
+
+<script type="text/javascript" src="components/directives/progressButton/progressButton-directive.js"></script>
 
 <script type="text/javascript" src="components/services/services.js"></script>
 <script type="text/javascript" src="components/services/security/security.js"></script>

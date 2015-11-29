@@ -196,12 +196,20 @@ function startTimGame() {
 
     function preload() {
 
-        game.load.atlasJSONHash('tim', 'components/games/tim/assets/tim/tim.png', 'components/games/tim/assets/tim/tim.json');
+	    game.load.onFileComplete.add(fileComplete, this);
+
+
+	    game.load.atlasJSONHash('tim', 'components/games/tim/assets/tim/tim.png', 'components/games/tim/assets/tim/tim.json');
         game.load.atlasJSONHash('staircase', 'components/games/tim/assets/staircase/staircase.png', 'components/games/tim/assets/staircase/staircase.json');
         game.load.atlasJSONHash('door', 'components/games/tim/assets/door/door.png', 'components/games/tim/assets/door/door.json');
         game.load.image('layout', 'components/games/tim/assets/layout.jpg');
         game.load.image('block', 'components/games/tim/assets/block.jpg');
 
+        game.load.start();
+    }
+
+    function fileComplete(progress) {
+        $(document).trigger('progressChange',[progress]);
     }
 
     function create() {

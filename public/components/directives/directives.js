@@ -1,1 +1,4 @@
-angular.module('directives',['createGame']);
+angular.module('directives',[
+	'createGame',
+	'progressButton'
+]);

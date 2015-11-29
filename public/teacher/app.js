@@ -23,11 +23,28 @@ angular.module('app', [
 
 		$locationProvider.html5Mode(true);
 	}])
-	.run(['$rootScope', 'ngProgress', function ($rootScope, ngProgress) {
+	.run(['$rootScope', 'ngProgress', '$q', '$document', function ($rootScope, ngProgress, $q, $document) {
 		var changeColorProgressbar = $rootScope.$on('$locationChangeStart', function () {
 			ngProgress.color('#FFFFFF');
 			changeColorProgressbar();
 		});
+
+		var routeChangePromise = $q.defer(),
+			documentReadyPromise = $q.defer(),
+			onRouteChangeSuccess = $rootScope.$on('$routeChangeSuccess', function () {
+				routeChangePromise.resolve();
+				onRouteChangeSuccess();
+			});
+
+		angular.element($document).ready(function() {
+			documentReadyPromise.resolve();
+		})
+
+
+		$q.all([routeChangePromise, documentReadyPromise]).then(function() {
+			$rootScope.appReady = true;
+		});
+
 		$rootScope.$on('$locationChangeStart', function (event) {
 			ngProgress.start();
 		});
