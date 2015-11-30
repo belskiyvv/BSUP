@@ -42,7 +42,7 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$temp
 				}
 			}
 		});
-	}
+	};
 
 	$scope.gridOptions.onRegisterApi = function (gridApi) {
 		//set gridApi on scope

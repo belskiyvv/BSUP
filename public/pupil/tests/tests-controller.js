@@ -10,6 +10,7 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$moda
 		enableHorizontalScrollbar: 0,
 		enableVerticalScrollbar: 0
 	};
+	$scope.loading = true;
 
 	$scope.gridOptions.columnDefs = [
 		{name: 'name', displayName: 'Название теста'},
@@ -47,6 +48,7 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$moda
 	$scope.testsList = [];
 
 	tests.getTestsList().then(function (response) {
+		$scope.loading = false;
 		$scope.testsList = response.data;
 		$scope.testsList.forEach(function (test) {
 			test.status = test.answers.length === test.questions.length ? 'Пройден' : 'Ожидается'

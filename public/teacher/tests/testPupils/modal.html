@@ -1,26 +1,26 @@
 <form class="form-horizontal account-management-modal" role="form" novalidate>
 
-    <div class="modal-header">
-        <h4 class="modal-title" id="editName">Тест "{{test.name}}"</h4>
-    </div>
+	<div class="modal-header">
+		<h4 class="modal-title" id="editName">Тест "{{test.name}}"</h4>
+	</div>
 
-    <div class="modal-body text-center">
-        <div class="row" ng-repeat="question in test.questions track by $index">
-            <p>Вопрос: <strong>{{question.text}}</strong></p>
+	<div class="modal-body text-center">
+		<div class="row" ng-repeat="question in test.questions track by $index">
+			<p>Вопрос: <strong>{{question.text}}</strong></p>
 
-            <p>Ответ ученика: <strong>{{question.answers[pupil.answers[$index]]}}</strong></p>
+			<p>Ответ ученика: <strong>{{question.answers[pupil.answers[$index]]}}</strong></p>
 
-            <div class="col-sm-offset-3 col-sm-6">
-                <hr/>
-            </div>
-        </div>
+			<div class="col-sm-offset-3 col-sm-6">
+				<hr/>
+			</div>
+		</div>
 
-    </div>
+	</div>
 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-success"
-                ng-click="$dismiss('cancel')">
-            Ок
-        </button>
-    </div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-success"
+		        ng-click="$dismiss('cancel')">
+			Ок
+		</button>
+	</div>
 </form>
