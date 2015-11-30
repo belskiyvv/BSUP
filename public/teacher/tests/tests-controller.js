@@ -13,6 +13,8 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$temp
 		enableVerticalScrollbar: 0
 	};
 
+	$scope.loading = true;
+
 	$scope.gridOptions.columnDefs = [
 		{
 			name: 'name',
@@ -71,6 +73,7 @@ angular.module('tests').controller('testsController', ['tests', '$scope', '$temp
 	};
 
 	tests.getTestsList().then(function (response) {
+		$scope.loading = false;
 		$scope.tests = response.data;
 	});
 
