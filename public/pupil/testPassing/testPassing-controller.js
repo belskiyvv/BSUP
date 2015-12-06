@@ -12,6 +12,7 @@ angular.module('testPassing').controller('testPassingController', ['$routeParams
 	angular.element(document).on('progressChange', function (e, progress) {
 		$scope.ctrl.instance.setProgress(progress / 100);
 		if (progress === 100) {
+			$scope.showGame = true;
 			$scope.ctrl.instance.stop(1);
 			$scope.disableButton = true;
 			$scope.buttonText = 'Тест начат';

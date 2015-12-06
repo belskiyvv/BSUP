@@ -165,6 +165,29 @@ module.exports = function (passport) {
 		})
 	});
 
+	router.get('/rest/groups', isAuthenticated, function (req, res) {
+		if (req.user.role === 'teacher') {
+			return rest.getGroupsByTeachId(req.user._id, function (err, groups) {
+				if (err) {
+					return res.send(500);
+				}
+				return res.json(groups);
+			});
+		}
+	});
+
+	router.post('/rest/groups', isAuthenticated, function (req, res) {
+		if (req.user.role === 'teacher') {
+			return rest.addGroup(req.body.name, req.user._id, function (err, group) {
+				if (err) {
+					return res.send(500);
+				}
+
+				return res.json(group);
+			})
+		}
+	})
+
 
 	router.get('/signout', function (req, res) {
 		req.logout();

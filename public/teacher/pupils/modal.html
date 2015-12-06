@@ -1,68 +1,117 @@
-<form name="form" class="form-horizontal account-management-modal" role="form">
+<form name="form"
+      class="form-horizontal account-management-modal"
+      role="form"
+      autocomplete="off"
+      novalidate
+      loading-container="loadingModal">
 
-    <div class="modal-header">
-        <h4 class="modal-title" id="editName">Новый ученик</h4>
-    </div>
+	<div class="modal-header">
+		<h4 class="modal-title" id="editName">Новый ученик</h4>
+	</div>
 
-    <div class="modal-body">
-        <div class="form-group validation slideDown text-center" ng-if="error">
-            <strong>{{error}}</strong>
-        </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Имя</label>
+	<div class="modal-body">
+		<div class="form-group validation slideDown text-center" ng-if="error">
+			<strong>{{error}}</strong>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Имя</label>
 
-                <div class="col-sm-8">
-                    <input name="name" ng-model="pupil.name" class="form-control" required>
-                    <div class="validation"
-                         ng-class="{'slideDown': form.name.$error.required && (form.name.$dirty || validError)}">
-                        Это поле не может быть пустым
-                    </div>
-                </div>
-            </div>
+			<div class="col-sm-8">
+				<input name="name" ng-model="pupil.name" class="form-control" required>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Фамилия</label>
+				<div class="validation"
+				     ng-class="{'slideDown': form.name.$error.required && (form.name.$dirty || validError)}">
+					Это поле не может быть пустым
+				</div>
+			</div>
+		</div>
 
-                <div class="col-sm-8">
-                    <input name="secondName" ng-model="pupil.secondName" class="form-control" required>
-                    <div class="validation"
-                         ng-class="{'slideDown': form.secondName.$error.required && (form.secondName.$dirty || validError)}">
-                        Это поле не может быть пустым
-                    </div>
-                </div>
-            </div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Фамилия</label>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Логин</label>
+			<div class="col-sm-8">
+				<input name="secondName" ng-model="pupil.secondName" class="form-control" required>
 
-                <div class="col-sm-8">
-                    <input name="username" ng-model="pupil.username" class="form-control" required>
-                    <div class="validation"
-                         ng-class="{'slideDown': form.username.$error.required && (form.username.$dirty || validError)}">
-                        Это поле не может быть пустым
-                    </div>
-                </div>
-            </div>
+				<div class="validation"
+				     ng-class="{'slideDown': form.secondName.$error.required && (form.secondName.$dirty || validError)}">
+					Это поле не может быть пустым
+				</div>
+			</div>
+		</div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Пароль</label>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Группа</label>
 
-                <div class="col-sm-8">
-                    <input name="password" ng-model="pupil.password" type="password" class="form-control" required>
-                    <div class="validation"
-                         ng-class="{'slideDown': form.password.$error.required && (form.password.$dirty || validError)}">
-                        Это поле не может быть пустым
-                    </div>
-                </div>
-            </div>
-    </div>
+			<div class="col-sm-5" ng-show="!newGroup">
+				<select required name="group"
+				        ui-select2
+				        ng-model="pupil.group"
+				        data-placeholder="Выберите группу">
+					<option value=""></option>
+					<option ng-repeat="group in groups" value="{{group._id}}">{{group.name}}</option>
+				</select>
 
-    <div class="modal-footer">
+				<div class="validation"
+				     ng-class="{'slideDown': form.group.$error.required && (form.group.$dirty || validError)}">
+					Это поле не может быть пустым
+				</div>
+			</div>
 
-        <button ng-click="savePupil(pupil)" class="btn btn-success">Сохранить</button>
-        <button type="button" class="btn btn-default"
-                ng-click="$dismiss('cancel')">
-            Отмена
-        </button>
-    </div>
+			<div class="col-sm-5" ng-show="newGroup">
+				<input name="newGroup" type="text" class="form-control" ng-model="pupil.newGroupName" required/>
+
+				<div class="validation"
+				     ng-class="{'slideDown': form.newGroup.$error.required && (form.newGroup.$dirty || validError)}">
+					Это поле не может быть пустым
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+				<button type="button"
+				        class="btn btn-success"
+				        ng-model="newGroup"
+				        btn-checkbox
+				        btn-checkbox-true="true"
+				        ng-click="pupil.group = ''; pupil.newGroupName = '';"
+				        btn-checkbox-false="false">
+					Новая группа
+				</button>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Логин</label>
+
+			<div class="col-sm-8">
+				<input name="username" ng-model="pupil.username" class="form-control" required>
+
+				<div class="validation"
+				     ng-class="{'slideDown': form.username.$error.required && (form.username.$dirty || validError)}">
+					Это поле не может быть пустым
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Пароль</label>
+
+			<div class="col-sm-8">
+				<input name="password" ng-model="pupil.password" type="password" class="form-control" required>
+
+				<div class="validation"
+				     ng-class="{'slideDown': form.password.$error.required && (form.password.$dirty || validError)}">
+					Это поле не может быть пустым
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+
+		<button ng-click="savePupil(pupil)" class="btn btn-success">Сохранить</button>
+		<button type="button" class="btn btn-default"
+		        ng-click="$dismiss('cancel')">
+			Отмена
+		</button>
+	</div>
 </form>

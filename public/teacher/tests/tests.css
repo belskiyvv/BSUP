@@ -1,14 +1,20 @@
 .tests-container .status-progress {
-    margin-top: 5px;
+	margin-top: 5px;
 }
-.pointer.progress-bar.progress-bar-success.ng-binding:hover {
-    background-color: #0E6C59;
-    webkit-transition: background-color 300ms linear;
-    -moz-transition: background-color 300ms linear;
-    -o-transition: background-color 300ms linear;
-    -ms-transition: background-color 300ms linear;
-    transition: background-color 300ms linear;
+
+.pointer.progress-bar.progress-bar-success:hover {
+	background-color: #9CD7CB;
+	webkit-transition: background-color 300ms linear;
+	-moz-transition: background-color 300ms linear;
+	-o-transition: background-color 300ms linear;
+	-ms-transition: background-color 300ms linear;
+	transition: background-color 300ms linear;
 }
+
 .pointer {
-    cursor: pointer;
+	cursor: pointer;
+}
+
+.status-progress span {
+	position: absolute;
 }

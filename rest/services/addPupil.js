@@ -10,7 +10,7 @@ module.exports = function (pupil, teacherId, callback) {
 		return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
 	};
 
-	Group.findOne({teacher_id: teacherId}, function (err, group) {
+	Group.findOne({teacher_id: teacherId, _id: pupil.group}, function (err, group) {
 		//console.log(group);
 		if (err) {
 			return callback(err);

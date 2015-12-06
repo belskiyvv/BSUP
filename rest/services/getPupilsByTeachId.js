@@ -14,7 +14,9 @@ module.exports = function (teachId, callback) {
 			result.push({
 				id: pupil._id,
 				name: pupil.name,
-				secondName: pupil.secondName
+				secondName: pupil.secondName,
+				groupId: pupils[i].groupId,
+				groupName: pupils[i].groupName
 			});
 
 			i++;
@@ -35,12 +37,12 @@ module.exports = function (teachId, callback) {
 		}
 
 		groups.forEach(function(group) {
-			pupils = pupils.concat(group.pupils);
+			pupils = pupils.concat(group.pupils.map(function(pupil) {
+				pupil.groupId = group._id;
+				pupil.groupName = group.name;
+				return pupil;
+			}));
 		});
-
-		//for (var i = 0; i < groups.length; i++) {
-		//	pupils = pupils.concat(groups[i].pupils);
-		//}
 
 		var result = [];
 		var i = 0;

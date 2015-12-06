@@ -7,6 +7,8 @@ var saveTestAnswers = require('./services/saveTestAnswers');
 var getPupilById = require('./services/getPupilById');
 var getPupilsByTestId = require('./services/getPupilsByTestId');
 var addPupil = require('./services/addPupil');
+var getGroupsByTeachId = require('./services/getGroupsByTeachId');
+var addGroup = require('./services/addGroup');
 var express = require('express');
 
 module.exports = {
@@ -18,5 +20,7 @@ module.exports = {
 	saveTestAnswers: saveTestAnswers,
 	getPupilById: getPupilById,
 	getPupilsByTestId: getPupilsByTestId,
-	addPupil: addPupil
+	addPupil: addPupil,
+	getGroupsByTeachId: getGroupsByTeachId,
+	addGroup: addGroup
 };

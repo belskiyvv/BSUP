@@ -13,7 +13,8 @@ angular.module('pupils').controller('pupilsController', ['pupils', '$scope', '$m
 	};
 	$scope.gridOptions.columnDefs = [
 		{name: 'name', displayName: 'Имя'},
-		{name: 'secondName', displayName: 'Фамилия'}
+		{name: 'secondName', displayName: 'Фамилия'},
+		{name: 'groupName', displayName: 'Группа', grouping: {groupPriority: 0}, sort: {direction: 'asc'}}
 	];
 	$scope.gridOptions.onRegisterApi = function (gridApi) {
 		//set gridApi on scope
@@ -34,19 +35,21 @@ angular.module('pupils').controller('pupilsController', ['pupils', '$scope', '$m
 			controller: 'pupilsModalController',
 			backdrop: 'static',
 			size: 'lg'
-		});
-	};
+		}).result.then(function () {
+				$scope.loading = true;
+				pupils.getPupilsList().then(function (response) {
+					$scope.loading = false;
+					$scope.pupils = response.data;
+				});
+			});
+	}
 
+	var groupsLength = 0;
 	$scope.getTableHeight = function () {
 		var rowHeight = 30; // your row height
 		var headerHeight = 62; // your header height
 		return {
-			height: ($scope.pupils.length * rowHeight + headerHeight) + "px"
+			height: (($scope.pupils.length + $scope.gridApi.grid.treeBase.tree.length) * rowHeight + headerHeight) + "px"
 		};
 	};
-	$scope.$on('reload', function () {
-		pupils.getPupilsList().then(function (response) {
-			$scope.pupils = response.data;
-		});
-	})
 }]);
