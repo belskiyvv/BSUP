@@ -33,10 +33,6 @@ module.exports = function (passport) {
 		})(req, res, next)
 	});
 
-	router.get('/home', isAuthenticated, function (req, res) {
-		console.log(req.user);
-	});
-
 	router.post('/rest/tests', isAuthenticated, function (req, res) {
 		var test = req.body;
 		console.log(req.user._id);

@@ -4,6 +4,9 @@
 	<base href="/">
 	<meta charset="UTF-8">
 	<title></title>
+
+	<!-- build:css /pupil/assets/styles/vendors.css-->
+
 	<link rel="stylesheet" type="text/css" href="components/bootstrap/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="components/bootstrap/freelancer.css">
 	<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/overcast/jquery-ui.min.css">
@@ -13,14 +16,18 @@
 	<link rel="stylesheet" type="text/css" href="bower_components/angular-ui-select/dist/select.min.css">
 	<link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
 	<link rel="stylesheet" type="text/css" href="bower_components/ihover/src/ihover.min.css">
+	<!--endbuild-->
+
+	<!-- build:css /pupil/assets/styles/styles.css-->
 	<link rel="stylesheet" type="text/css" href="assets/animations.css">
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
-
 	<link rel="stylesheet" type="text/css" href="pupil/app.css">
 	<link rel="stylesheet" type="text/css" href="pupil/header/header.css">
 	<link rel="stylesheet" type="text/css" href="pupil/home/home.css">
 	<link rel="stylesheet" type="text/css" href="components/directives/createGame/createGame.css">
 	<link rel="stylesheet" type="text/css" href="components/UIProgress/component.css">
+	<!--endbuild-->
+
 
 
 </head>
@@ -55,7 +62,7 @@
 
 <div ng-include="'footer/footer.html'"></div>
 
-
+<!-- build:js /pupil/assets/vendors.min.js-->
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
@@ -77,8 +84,10 @@
 <script type="text/javascript" src="components/UIProgress/modernizr.custom.js"></script>
 <script type="text/javascript" src="components/UIProgress/classie.js"></script>
 <script type="text/javascript" src="components/UIProgress/uiProgressButton.js"></script>
+<!--endbuild-->
 
 
+<!--build:js /pupil/assets/scripts.min.js-->
 <script type="text/javascript" src="pupil/app.js"></script>
 <script type="text/javascript" src="pupil/app-controller.js"></script>
 
@@ -113,6 +122,7 @@
 <script type="text/javascript" src="pupil/testPassing/testPassing-controller.js"></script>
 <script type="text/javascript" src="pupil/testPassing/testPassing-service.js"></script>
 <script type="text/javascript" src="pupil/testPassing/testComplete-controller.js"></script>
+<!--endbuild-->
 
 </body>
 </html>

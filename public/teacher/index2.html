@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head lang="en">
-    <base href="/">
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="components/bootstrap/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="components/bootstrap/freelancer.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/overcast/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/select2/select2.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/ngprogress/ngProgress.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-select/dist/select.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/ihover/src/ihover.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/animations.css">
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+	<base href="/">
+	<meta charset="UTF-8">
+	<title></title>
 
-    <link rel="stylesheet" type="text/css" href="teacher/app.css">
-    <link rel="stylesheet" type="text/css" href="teacher/header/header.css">
-    <link rel="stylesheet" type="text/css" href="teacher/home/home.css">
-    <link rel="stylesheet" type="text/css" href="teacher/tests/tests.css">
-    <link rel="stylesheet" type="text/css" href="components/directives/createGame/createGame.css">
+	<!-- build:css /teacher/assets/styles/vendors.css-->
+	<link rel="stylesheet" type="text/css" href="components/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="components/bootstrap/freelancer.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/overcast/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/select2/select2.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/ngprogress/ngProgress.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-ui-select/dist/select.min.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/ihover/src/ihover.min.css">
+	<!-- endbuild -->
+
+	<!-- build:css /teacher/assets/styles/styles.css-->
+	<link rel="stylesheet" type="text/css" href="assets/animations.css">
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+
+	<link rel="stylesheet" type="text/css" href="teacher/app.css">
+	<link rel="stylesheet" type="text/css" href="teacher/header/header.css">
+	<link rel="stylesheet" type="text/css" href="teacher/home/home.css">
+	<link rel="stylesheet" type="text/css" href="teacher/tests/tests.css">
+	<link rel="stylesheet" type="text/css" href="components/directives/createGame/createGame.css">
+	<!--endbuild-->
 
 
 </head>
@@ -28,21 +34,21 @@
 <!--SPINNER-->
 <span ng-if="!appReady">
 <div class="dots">
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
+	<div class="dot"></div>
 </div>
 
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"/>
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
-            <!--<feBlend in2="goo" in="SourceGraphic" result="mix" />-->
-        </filter>
-    </defs>
+	<defs>
+		<filter id="goo">
+			<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"/>
+			<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
+			<!--<feBlend in2="goo" in="SourceGraphic" result="mix" />-->
+		</filter>
+	</defs>
 </svg>
 </span>
 <!--END-->
@@ -54,6 +60,7 @@
 
 <div ng-include="'footer/footer.html'"></div>
 
+<!-- build:js /teacher/assets/vendors.min.js-->
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery-placeholder/jquery.placeholder.js"></script>
@@ -72,8 +79,12 @@
 <script type="text/javascript" src="bower_components/angular-ui-sortable/sortable.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-ui-grid/ui-grid.js"></script>
 <script type="text/javascript" src="components/phaser/phaser.min.js"></script>
+<script type="text/javascript" src="components/UIProgress/modernizr.custom.js"></script>
+<script type="text/javascript" src="components/UIProgress/classie.js"></script>
+<script type="text/javascript" src="components/UIProgress/uiProgressButton.js"></script>
+<!--endbuild-->
 
-
+<!--build:js /teacher/assets/scripts.min.js-->
 <script type="text/javascript" src="teacher/app.js"></script>
 <script type="text/javascript" src="teacher/app-controller.js"></script>
 
@@ -123,6 +134,7 @@
 <script type="text/javascript" src="teacher/pupils/pupils-controller.js"></script>
 <script type="text/javascript" src="teacher/pupils/pupils-service.js"></script>
 <script type="text/javascript" src="teacher/pupils/pupilsModal-controller.js"></script>
+<!--endbuild-->
 
 </body>
 </html>
