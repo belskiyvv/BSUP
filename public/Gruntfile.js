@@ -22,8 +22,8 @@ module.exports = function (grunt) {
 				'bower_components/ihover/src/ihover.min.css'
 			],
 			custom: [
-				'assets/animations.css',
-				'assets/style.css',
+				'assets/styles/animations.css',
+				'assets/styles/style.css',
 				'components/directives/createGame/createGame.css',
 				'components/UIProgress/component.css'
 			]
